@@ -16,8 +16,9 @@ export class AuthGuard implements CanLoad {
       skipWhile(value => value === null),
       take(1),
       tap((authenticated) => {
-        const rootRoute = this.router.navigateByUrl('/');
-        !authenticated ? rootRoute : null;
+        if (!authenticated) {
+          return this.router.navigateByUrl('/');
+        }
       })
     );
   }

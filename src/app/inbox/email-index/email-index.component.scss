@@ -1,0 +1,11 @@
+.item {
+    padding: 0 !important;
+    a {
+        color: #333;
+        &.active {
+            background: #f1f1f1;
+            display: block;
+            padding: 5px 15px;
+        }
+    }
+}

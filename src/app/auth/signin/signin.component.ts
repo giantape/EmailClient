@@ -29,7 +29,10 @@ export class SigninComponent implements OnInit {
         this.router.navigateByUrl('/inbox');
       },
       error: ({error}) => {
-        (error.username || error.password) ? this.authForm.setErrors({credentials: true}) : null;
+        if (error.username || error.password) {
+          this.authForm.setErrors({credentials: true})
+        }
+        //(error.username || error.password) ? this.authForm.setErrors({credentials: true}) : null;
       }
     });
 
