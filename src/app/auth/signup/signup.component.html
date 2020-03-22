@@ -9,7 +9,10 @@
         <p *ngIf="authForm.errors.passwordDontMatch">
             Password and Password Confirmation does not match
         </p>
+        <p *ngIf="authForm.errors.noConnection">
+            sorry has no access to the server
+        </p>
     </div>
     <button class="ui submit button primary block">Submit</button>
-    {{ authForm.errors | json }}
+    <!-- {{ authForm.errors | json }} -->
 </form>
