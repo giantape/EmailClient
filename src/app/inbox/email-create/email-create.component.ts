@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./email-create.component.scss']
 })
 export class EmailCreateComponent implements OnInit {
-
+  showModal = false;
   constructor() { }
 
   ngOnInit(): void {
