@@ -1,6 +1,7 @@
 <div class="field">
     <label>{{label}}</label>
-    <input [formControl]="control" [type]="inputType">
+    <input *ngIf="controlType === 'input'" [formControl]="control" [type]="inputType">
+    <textarea *ngIf="controlType === 'textarea'" [formControl]="control"></textarea>
     <div *ngIf="showErrors()" class="ui pointing red basic label">
         <p *ngIf="control.errors.required">{{label}} is Required!</p>
         <p *ngIf="control.errors.minlength">{{label}} is to short</p>
@@ -8,5 +9,6 @@
         <p *ngIf="control.errors.pattern">Invalid format {{label}}</p>
         <p *ngIf="control.errors.nonUniqeUsername"> {{label}} is taken</p>
         <p *ngIf="control.errors.nonConnection"> Failed to Connect Server </p>
+        <p *ngIf="control.errors.email">E-Mail is not Valid</p>
     </div>
 </div>

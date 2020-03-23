@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Email } from '../email';
 
 @Component({
   selector: 'app-email-form',
@@ -6,10 +8,30 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./email-form.component.scss']
 })
 export class EmailFormComponent implements OnInit {
+  emailForm: FormGroup;
+  @Input() email: Email;
+  @Output() emailSubmit = new EventEmitter();
 
   constructor() { }
 
   ngOnInit(): void {
+    const { subject, from, to, text } = this.email;
+    this.emailForm = new FormGroup({
+      to: new FormControl(to, [Validators.required, Validators.email]),
+      from: new FormControl({value: from, disabled: true}),
+      subject: new FormControl(subject, [Validators.required]),
+      text: new FormControl(text, [Validators.required])
+    });
+  }
+
+  onSubmit() {
+    if (this.emailForm.invalid) {
+      return;
+    }
+
+    // to read disabled value of input better using .getRowValue() insted of .value 
+    console.log(this.emailForm.getRawValue());
+    this.emailSubmit.emit(this.emailForm.getRawValue())
   }
 
 }

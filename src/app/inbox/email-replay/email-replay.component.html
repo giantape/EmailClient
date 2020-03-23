@@ -1,1 +1,6 @@
-<p>email-replay works!</p>
+<button class="ui button primary" (click)="showModal = true">Replay</button>
+
+<app-modal *ngIf="showModal" (dismiss)="showModal = false">
+    <h3 modalTitle>Replay</h3>
+    <app-email-form [email]="email" (emailSubmit)="onSubmit($event)"></app-email-form>
+</app-modal>
