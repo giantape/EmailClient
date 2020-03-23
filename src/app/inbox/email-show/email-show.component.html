@@ -8,4 +8,9 @@
             To: <i>{{email.to}}</i>
         </div>
     </div>
+    <div>
+        <app-email-replay [email]="email"></app-email-replay>
+    </div>
 </div>
+<div class="ui divider"></div>
+<div [innerHTML]="email.text"></div>

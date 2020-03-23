@@ -1,0 +1,14 @@
+.actions {
+    &:empty {
+        display: none;
+    }
+    
+    
+    &-default {
+        display: none;
+    }
+
+    &:empty + &-default {
+        display: block;
+    }
+}
